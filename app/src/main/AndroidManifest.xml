@@ -9,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-        <!--HOME-->
+        <!-- HOME -->
         <activity
             android:name=".Home.LoginLogoutActivity"
             android:label="@string/app_name">
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
 
-        <!--CREDENTIALS-->
+        <!-- CREDENTIALS -->
         <activity
             android:name=".Credentials.CredentialsActivity"
             android:label="@string/title_activity_credentials"
@@ -30,7 +30,7 @@
                 android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
 
-        <!--PREVIOUS CONNECTIONS-->
+        <!-- PREVIOUS CONNECTIONS -->
         <activity
             android:name=".PrevConn.PrevConnActivity"
             android:label="@string/title_activity_prev_conn"
@@ -40,7 +40,7 @@
                 android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
 
-        <!--SETTINGS-->
+        <!-- SETTINGS -->
         <activity
             android:name=".Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
@@ -51,22 +51,23 @@
                 android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
 
-        <!--ADVANCED SETTINGS-->
+        <!-- ADVANCED SETTINGS -->
         <activity
-            android:name=".Settings.AdvSet.AdvSetActivity"
+            android:name=".Settings.AdvSetActivity"
             android:label="@string/pref_title_adv_set"
             android:parentActivityName=".Settings.SettingsActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tk.deepesh.loginclient.Settings.SettingsActivity" />
+
             <intent-filter>
                 <action android:name="tk.deepesh.loginclient.Settings.AdvSet.AdvSetActivity" />
+
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
-
-        <!--ABOUT-->
+        <!-- ABOUT -->
         <activity
             android:name=".About.AboutActivity"
             android:label="@string/title_activity_about"
@@ -74,6 +75,24 @@
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
+        </activity>
+        <activity
+            android:name=".Settings.IndivSsidActivity"
+            android:label="@string/title_activity_indiv_ssid"
+            android:parentActivityName=".Settings.AdvSetActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.deepesh.loginclient.Settings.AdvSetActivity" />
+        </activity>
+        <activity
+            android:name=".Settings.IndivUrlActivity"
+            android:label="@string/title_activity_indiv_url"
+            android:parentActivityName=".Settings.IndivSsidActivity"
+            android:theme="@style/AppTheme">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.deepesh.loginclient.Settings.IndivSsidActivity" />
         </activity>
     </application>
 

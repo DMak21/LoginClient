@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
-    tools:context="tk.deepesh.loginclient.Settings.AdvSetActivity">
+    tools:context="tk.deepesh.loginclient.Settings.IndivSsidActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
@@ -21,7 +21,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <include layout="@layout/content_adv_set" />
+    <include layout="@layout/content_indiv_ssid" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"

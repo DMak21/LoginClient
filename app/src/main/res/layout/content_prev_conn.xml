@@ -13,4 +13,10 @@
     tools:context="tk.deepesh.loginclient.PrevConn.PrevConnActivity"
     tools:showIn="@layout/activity_prev_conn">
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyler_view_prev_conn"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical" />
+
 </RelativeLayout>

@@ -47,5 +47,7 @@
     <string name="text_about_3">
         View Source Code
     </string>
+    <string name="title_activity_indiv_ssid">IndivSSIDActivity</string>
+    <string name="title_activity_indiv_url">IndivUrlActivity</string>
 
 </resources>
