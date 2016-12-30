@@ -1,4 +1,4 @@
-package tk.deepesh.loginclient;
+package tk.deepesh.loginclient.Home;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import tk.deepesh.loginclient.About.AboutActivity;
+import tk.deepesh.loginclient.Credentials.CredentialsActivity;
+import tk.deepesh.loginclient.PrevConn.PrevConnActivity;
+import tk.deepesh.loginclient.R;
+import tk.deepesh.loginclient.Settings.SettingsActivity;
 
 public class LoginLogoutActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {

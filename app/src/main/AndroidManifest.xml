@@ -4,55 +4,76 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <!--HOME-->
         <activity
-            android:name=".LoginLogoutActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:name=".Home.LoginLogoutActivity"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--CREDENTIALS-->
         <activity
-            android:name=".AboutActivity"
-            android:label="@string/title_activity_about"
-            android:parentActivityName=".LoginLogoutActivity"
-            android:theme="@style/AppTheme">
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="tk.deepesh.loginclient.LoginLogoutActivity" />
-        </activity>
-        <activity
-            android:name=".CredentialsActivity"
+            android:name=".Credentials.CredentialsActivity"
             android:label="@string/title_activity_credentials"
-            android:parentActivityName=".LoginLogoutActivity"
-            android:theme="@style/AppTheme">
+            android:parentActivityName=".Home.LoginLogoutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tk.deepesh.loginclient.LoginLogoutActivity" />
+                android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
+
+        <!--PREVIOUS CONNECTIONS-->
         <activity
-            android:name=".PrevConnActivity"
+            android:name=".PrevConn.PrevConnActivity"
             android:label="@string/title_activity_prev_conn"
-            android:parentActivityName=".LoginLogoutActivity"
-            android:theme="@style/AppTheme">
+            android:parentActivityName=".Home.LoginLogoutActivity">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tk.deepesh.loginclient.LoginLogoutActivity" />
+                android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
+
+        <!--SETTINGS-->
         <activity
-            android:name=".SettingsActivity"
+            android:name=".Settings.SettingsActivity"
             android:label="@string/title_activity_settings"
-            android:parentActivityName=".LoginLogoutActivity"
-            android:theme="@style/AppTheme">
+            android:parentActivityName=".Home.LoginLogoutActivity"
+            android:theme="@style/PrefTheme">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="tk.deepesh.loginclient.LoginLogoutActivity" />
+                android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
+        </activity>
+
+        <!--ADVANCED SETTINGS-->
+        <activity
+            android:name=".Settings.AdvSet.AdvSetActivity"
+            android:label="@string/pref_title_adv_set"
+            android:parentActivityName=".Settings.SettingsActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.deepesh.loginclient.Settings.SettingsActivity" />
+            <intent-filter>
+                <action android:name="tk.deepesh.loginclient.Settings.AdvSet.AdvSetActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+
+        <!--ABOUT-->
+        <activity
+            android:name=".About.AboutActivity"
+            android:label="@string/title_activity_about"
+            android:parentActivityName=".Home.LoginLogoutActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="tk.deepesh.loginclient.Home.LoginLogoutActivity" />
         </activity>
     </application>
 

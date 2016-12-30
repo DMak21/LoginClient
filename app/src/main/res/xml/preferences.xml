@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="auto_login"
+        android:summary="@string/pref_description_auto_login"
+        android:title="@string/pref_title_auto_login"></CheckBoxPreference>
+    <CheckBoxPreference
+        android:defaultValue="true"
+        android:key="auto_id_switch"
+        android:summary="@string/pref_description_auto_id_switch"
+        android:title="@string/pref_title_auto_id_switch"></CheckBoxPreference>
+    <Preference android:title="@string/pref_title_change_password">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="@string/pref_url_change_password" />
+    </Preference>
+    <Preference
+        android:summary="@string/pref_description_adv_set"
+        android:title="@string/pref_title_adv_set">
+        <intent android:action="tk.deepesh.loginclient.Settings.AdvSet.AdvSetActivity" />
+    </Preference>
+</PreferenceScreen>

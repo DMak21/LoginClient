@@ -1,12 +1,14 @@
-package tk.deepesh.loginclient;
+package tk.deepesh.loginclient.Credentials;
 
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
+
+import tk.deepesh.loginclient.R;
 
 public class CredentialsActivity extends AppCompatActivity {
 
@@ -29,7 +31,7 @@ public class CredentialsActivity extends AppCompatActivity {
         try {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e){
-            Log.d(e.toString(), "CredentialsActivity");
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 

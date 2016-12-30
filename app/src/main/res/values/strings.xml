@@ -1,19 +1,51 @@
 <resources>
+    <!--APP-->
     <string name="app_name">Login Client</string>
-
+    <string name="app_creator">Mobile App Club BITS Goa</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
-    <string name="action_settings">Settings</string>
-    <string name="btn_login">LOGIN</string>
+    <!--HOME-->
+    <string name="title_activity_login_logout">Home</string>
+    <string name="checkbox_rem_cred">Remember Credentials</string>
     <string name="edit_username">username</string>
     <string name="edit_password">password</string>
+    <string name="btn_login">LOGIN</string>
     <string name="btn_logout">LOGOUT</string>
-    <string name="title_activity_about">About</string>
+
+    <!--CREDENTIALS-->
     <string name="title_activity_credentials">Credentials</string>
+
+    <!--PREVIOUS CONNECTIONS-->
     <string name="title_activity_prev_conn">Previous Connections</string>
+
+    <!--SETTINGS-->
     <string name="title_activity_settings">Settings</string>
-    <string name="title_activity_login_logout">Home</string>
-    <string name="app_creator">Mobile App Club BITS Goa</string>
-    <string name="checkbox_rem_cred">Remember Credentials</string>
+    <string name="pref_title_auto_login">Auto Login</string>
+    <string name="pref_description_auto_login">
+        You will be automatically logged in if you connect to a trusted WiFi Network
+    </string>
+    <string name="pref_title_auto_id_switch">Auto Id Switch</string>
+    <string name="pref_description_auto_id_switch">
+        User ids will be automatically switched if default ids data has exhausted
+    </string>
+    <string name="pref_title_change_password">Change Password</string>
+    <string name="pref_url_change_password">http://www.google.com</string>
+    <string name="pref_title_adv_set">Advanced Settings</string>
+    <string name="pref_description_adv_set">
+        Only for Pro users :P
+    </string>
+
+    <!--ABOUT-->
+    <string name="title_activity_about">About</string>
+    <string name="text_about_1">
+        Login Client is a simple android app (yet hackable to the core) that automatically logs you into to WiFi Networks. The app is an Advanced Version of the popular app BPGC Login with many bug fixes and new features.
+    </string>
+    <string name="text_about_2">
+        Login Client is completely Open Source and is hosted on Github
+    </string>
+    <string name="text_about_3">
+        View Source Code
+    </string>
+
 </resources>

@@ -1,9 +1,11 @@
-package tk.deepesh.loginclient;
+package tk.deepesh.loginclient.PrevConn;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import android.widget.Toast;
+
+import tk.deepesh.loginclient.R;
 
 public class PrevConnActivity extends AppCompatActivity {
 
@@ -17,7 +19,7 @@ public class PrevConnActivity extends AppCompatActivity {
         try {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         } catch (NullPointerException e){
-            Log.d(e.toString(), "PrevConnActivity");
+            Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
     }
 
