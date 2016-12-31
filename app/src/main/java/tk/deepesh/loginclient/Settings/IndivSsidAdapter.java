@@ -16,10 +16,12 @@ import tk.deepesh.loginclient.R;
 
 public class IndivSsidAdapter extends RecyclerView.Adapter<IndivSsidAdapter.ViewHolder> {
     private ArrayList<String> mDataset;
+    private String[][] paramList;
 
     // Provide a suitable constructor (depends on the kind of dataset)
-    public IndivSsidAdapter(ArrayList<String> myDataset) {
+    public IndivSsidAdapter(ArrayList<String> myDataset, String[][] paramList) {
         mDataset = myDataset;
+        this.paramList = paramList;
     }
 
     public void add(int position, String item) {
@@ -51,11 +53,11 @@ public class IndivSsidAdapter extends RecyclerView.Adapter<IndivSsidAdapter.View
         // - replace the contents of the view with that element
         final String name = mDataset.get(position);
         holder.text_indiv_ssid_url_value.setText(mDataset.get(position));
-        holder.text_indiv_ssid_param1.setText(mDataset.get(position));
-        holder.text_indiv_ssid_param2.setText(mDataset.get(position));
-        holder.text_indiv_ssid_param3.setText(mDataset.get(position));
-        holder.text_indiv_ssid_param4.setText(mDataset.get(position));
-        holder.text_indiv_ssid_param5.setText(mDataset.get(position) + " : " + mDataset.get(position));
+        holder.text_indiv_ssid_param1.setText(paramList[0][0] + " : " + paramList[0][1]);
+        holder.text_indiv_ssid_param2.setText(paramList[1][0] + " : " + paramList[1][1]);
+        holder.text_indiv_ssid_param3.setText(paramList[2][0] + " : " + paramList[2][1]);
+        holder.text_indiv_ssid_param4.setText(paramList[3][0] + " : " + paramList[3][1]);
+        holder.text_indiv_ssid_param5.setText(paramList[4][0] + " : " + paramList[4][1]);
 //        holder.text_indiv_ssid_param.setOnClickListener(new OnClickListener() {
 //            @Override
 //            public void onClick(View v) {

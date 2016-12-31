@@ -35,7 +35,7 @@ public class IndivUrlActivity extends AppCompatActivity {
         SharedPreferences prefs1 = getSharedPreferences("credentials", MODE_PRIVATE);
         SharedPreferences.Editor editor1 = prefs1.edit();
 
-        SharedPreferences prefs2 = getSharedPreferences("ind_ssid", MODE_PRIVATE);
+        SharedPreferences prefs2 = getSharedPreferences("ind_url", MODE_PRIVATE);
         final SharedPreferences.Editor editor2 = prefs2.edit();
 
         save_btn = (Button) findViewById(R.id.save_btn);
@@ -69,10 +69,28 @@ public class IndivUrlActivity extends AppCompatActivity {
 
         Set setA = new HashSet();
 
-        setA.add("f2015764");
         setA.add("password");
+        setA.add("f2015764");
+
+        Set setB = new HashSet();
+
+        setB.add("pas");
+        setB.add("f20");
+
+        Set setC = new HashSet();
+
+        setC.add("pa");
+        setC.add("f2");
+
+        Set setD = new HashSet();
+
+        setD.add("passwor");
+        setD.add("f201576");
 
         editor1.putStringSet("0", setA);
+        editor1.putStringSet("1", setB);
+        editor1.putStringSet("2", setC);
+        editor1.putStringSet("3", setD);
         editor1.commit();
 
         final Set<String> restoredText = prefs1.getStringSet("0", null);

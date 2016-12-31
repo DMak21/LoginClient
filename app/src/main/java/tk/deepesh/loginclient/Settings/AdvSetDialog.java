@@ -1,4 +1,4 @@
-package tk.deepesh.loginclient.Credentials;
+package tk.deepesh.loginclient.Settings;
 
 import android.content.Context;
 import android.content.DialogInterface;
@@ -14,11 +14,16 @@ import java.util.Set;
 import tk.deepesh.loginclient.R;
 
 /**
- * Created by deepesh on 26/12/16.
+ * Created by deepesh on 21/12/16.
  */
 
-public class CredentialDialog {
+public class AdvSetDialog {
     Context context;
+    private ClickListener listener;
+
+    public void setClickListener(ClickListener listener) {
+        this.listener = listener;
+    }
 
     public void showDialog(
             final Context context,
@@ -26,27 +31,36 @@ public class CredentialDialog {
         this.context = context;
 
         final android.app.AlertDialog.Builder ad = new android.app.AlertDialog.Builder(context);
+
         LayoutInflater li = LayoutInflater.from(context);
-        View promptsView = li.inflate(R.layout.dialog_credentials, null);
+        View promptsView = li.inflate(R.layout.dialog_adv_set, null);
         final EditText newssid = (EditText) promptsView
-                .findViewById(R.id.add_cred_user_value);
+                .findViewById(R.id.newssid);
 
         ad.setView(promptsView);
         ad.setPositiveButton(buttonText, new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 Set<String> ssidlist;
-                SharedPreferences sharedPref = context.getSharedPreferences("ssilist", Context.MODE_PRIVATE);
+                SharedPreferences sharedPref = context.getSharedPreferences("ssidlist", Context.MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedPref.edit();
 
+                Set<String> s;
+
                 if ((sharedPref.getStringSet("ssidlist", null) == null)) {
-                    ssidlist = new HashSet<>();
+                    s = new HashSet<>();
                 } else {
                     ssidlist = sharedPref.getStringSet("ssidlist", null);
+                    s = new HashSet<>(ssidlist);
                 }
-                ssidlist.add(newssid.getText().toString());
-                editor.putStringSet("ssidlist", ssidlist);
+
+                s.add(newssid.getText().toString());
+
+                editor.putStringSet("ssidlist", s);
                 editor.commit();
+
+                if (listener != null)
+                    listener.onPosButtonClick();
             }
         });
 
@@ -60,4 +74,11 @@ public class CredentialDialog {
         });
         alertDialog.show();
     }
+
+    public interface ClickListener {
+        // These methods are the different events and
+        // need to pass relevant arguments related to the event triggered
+        void onPosButtonClick();
+    }
+
 }

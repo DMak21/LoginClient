@@ -14,34 +14,43 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import tk.deepesh.loginclient.R;
+import tk.deepesh.loginclient.RecyclerItemClickListener;
 
 public class IndivSsidActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
 
-    private ArrayList<String> myDataset;
+    private ArrayList<String> urlList;
+    private String[][] paramList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_indiv_ssid);
-        myDataset = new ArrayList<>();
-        myDataset.add("BPGC-HOSTEL");
-        myDataset.add("BPGC-WIFI");
+
+        final int position_adv_set = getIntent().getIntExtra("position_adv_set", 0);
+
+        urlList = new ArrayList<>();
+        urlList.add("http://www.google.com");
+        urlList.add("http://www.yahoo.com");
+
+        paramList = new String[5][2];
+        paramList[0][0] = "Makkamd";
+        paramList[0][1] = "eddkjnsd";
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyler_view_indiv_ssid);
 
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
-//        mRecyclerView.setHasFixedSize(true);
+        mRecyclerView.setHasFixedSize(true);
 
         // use a linear layout manager
         mLayoutManager = new LinearLayoutManager(this);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         // specify an adapter (see also next example)
-        mAdapter = new IndivSsidAdapter(myDataset);
+        mAdapter = new IndivSsidAdapter(urlList, paramList);
         mRecyclerView.setAdapter(mAdapter);
 
         DividerItemDecoration mDividerItemDecoration = new DividerItemDecoration(mRecyclerView.getContext(), DividerItemDecoration.VERTICAL);
@@ -65,6 +74,23 @@ public class IndivSsidActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
+
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(IndivSsidActivity.this, mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(IndivSsidActivity.this, IndivUrlActivity.class);
+                        intent.putExtra("position_indiv_ssid", position);
+                        intent.putExtra("position_adv_set", position_adv_set);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
 
 }

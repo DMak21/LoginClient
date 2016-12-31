@@ -14,6 +14,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 import tk.deepesh.loginclient.R;
+import tk.deepesh.loginclient.RecyclerItemClickListener;
 
 public class AdvSetActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
@@ -54,8 +55,14 @@ public class AdvSetActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(AdvSetActivity.this, IndivSsidActivity.class);
-                startActivity(intent);
+                final AdvSetDialog alert = new AdvSetDialog();
+                alert.showDialog(AdvSetActivity.this, "SAVE");
+                alert.setClickListener(new AdvSetDialog.ClickListener() {
+                    @Override
+                    public void onPosButtonClick() {
+
+                    }
+                });
             }
         });
         try {
@@ -63,6 +70,22 @@ public class AdvSetActivity extends AppCompatActivity {
         } catch (NullPointerException e) {
             Toast.makeText(this, e.toString(), Toast.LENGTH_SHORT).show();
         }
+
+        mRecyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(AdvSetActivity.this, mRecyclerView, new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(AdvSetActivity.this, IndivSsidActivity.class);
+                        intent.putExtra("position_adv_set", position);
+                        startActivity(intent);
+                    }
+
+                    @Override
+                    public void onLongItemClick(View view, int position) {
+                        // do whatever
+                    }
+                })
+        );
     }
 
 }

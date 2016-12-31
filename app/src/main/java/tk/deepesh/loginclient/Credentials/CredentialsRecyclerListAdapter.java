@@ -1,5 +1,7 @@
 package tk.deepesh.loginclient.Credentials;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.Snackbar;
 import android.support.v4.view.MotionEventCompat;
 import android.support.v7.widget.RecyclerView;
@@ -13,7 +15,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import tk.deepesh.helper.ItemTouchHelperAdapter;
 import tk.deepesh.helper.ItemTouchHelperViewHolder;
@@ -28,28 +32,31 @@ import tk.deepesh.loginclient.R;
 public class CredentialsRecyclerListAdapter extends RecyclerView.Adapter<CredentialsRecyclerListAdapter.ItemViewHolder>
         implements ItemTouchHelperAdapter {
 
-    private static final String[] STRINGS = new String[]{
-            "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten"
-    };
-    private final List<String> mItems = new ArrayList<>();
-    private final OnStartDragListener mDragStartListener;
 
-    public CredentialsRecyclerListAdapter(OnStartDragListener dragStartListener) {
+    private final List<List<String>> params;
+    private final OnStartDragListener mDragStartListener;
+    List<List<String>> params2 = new ArrayList<>();
+    SharedPreferences prefs1;
+    SharedPreferences.Editor editor1;
+    private Context context;
+
+    public CredentialsRecyclerListAdapter(OnStartDragListener dragStartListener, List<List<String>> params, Context context) {
         mDragStartListener = dragStartListener;
-        mItems.addAll(Arrays.asList(STRINGS));
+        this.context = context;
+        this.params = new ArrayList<>(params);
     }
 
     @Override
     public ItemViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_main, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_credentials, parent, false);
         ItemViewHolder itemViewHolder = new ItemViewHolder(view);
         return itemViewHolder;
     }
 
     @Override
     public void onBindViewHolder(final ItemViewHolder holder, int position) {
-        holder.textView.setText(mItems.get(position));
-
+        holder.text_credentials_username.setText(params.get(position).get(0));
+        holder.text_credentials_password.setText(params.get(position).get(1));
         // Start a drag whenever the handle view it touched
         holder.handleView.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -60,13 +67,17 @@ public class CredentialsRecyclerListAdapter extends RecyclerView.Adapter<Credent
                 return false;
             }
         });
+
+        prefs1 = context.getSharedPreferences("credentials", Context.MODE_PRIVATE);
+        editor1 = prefs1.edit();
     }
 
     @Override
     public void onItemDismiss(final int position, RecyclerView rv) {
-        final String removedItem = mItems.get(position);
 
-        mItems.remove(position);
+        final List<String> removedItem = new ArrayList<>(Arrays.asList(params.get(position).get(0), params.get(position).get(1)));
+
+        params.remove(position);
         notifyItemRemoved(position);
 
         Snackbar snackbar = Snackbar
@@ -74,22 +85,44 @@ public class CredentialsRecyclerListAdapter extends RecyclerView.Adapter<Credent
                 .setAction("UNDO", new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        mItems.add(position, removedItem);
+                        params.add(position, removedItem);
                         notifyDataSetChanged();
+
+//                        for (int i = prefs1.getAll().size() - 1; i <= position; i--) {
+//                            Set<String> restoredText = prefs1.getStringSet(Integer.toString(i), null);
+//                            editor1.putStringSet(Integer.toString(i+1), restoredText);
+//                        }
+//
+//                        editor1.putStringSet(Integer.toString(position), new HashSet<>(removedItem));
                     }
                 });
         snackbar.show();
+
+        editor1.remove(Integer.toString(position));
+
+        for (int i = position; i < prefs1.getAll().size() - 1; i++) {
+            Set<String> restoredText = prefs1.getStringSet(Integer.toString(i + 1), null);
+            editor1.putStringSet(Integer.toString(i), restoredText);
+        }
+        editor1.remove(Integer.toString(prefs1.getAll().size() - 1));
+
+        editor1.apply();
     }
 
     @Override
     public void onItemMove(int fromPosition, int toPosition) {
-        Collections.swap(mItems, fromPosition, toPosition);
+        Collections.swap(params, fromPosition, toPosition);
         notifyItemMoved(fromPosition, toPosition);
+
+        editor1.putStringSet(Integer.toString(fromPosition), new HashSet<>(params.get(fromPosition)));
+        editor1.apply();
+        editor1.putStringSet(Integer.toString(toPosition), new HashSet<>(params.get(toPosition)));
+        editor1.apply();
     }
 
     @Override
     public int getItemCount() {
-        return mItems.size();
+        return params.size();
     }
 
     /**
@@ -112,12 +145,13 @@ public class CredentialsRecyclerListAdapter extends RecyclerView.Adapter<Credent
     public static class ItemViewHolder extends RecyclerView.ViewHolder implements
             ItemTouchHelperViewHolder {
 
-        public final TextView textView;
+        public final TextView text_credentials_username, text_credentials_password;
         public final ImageView handleView;
 
         public ItemViewHolder(View itemView) {
             super(itemView);
-            textView = (TextView) itemView.findViewById(R.id.text);
+            text_credentials_username = (TextView) itemView.findViewById(R.id.text_credentials_username);
+            text_credentials_password = (TextView) itemView.findViewById(R.id.text_credentials_password);
             handleView = (ImageView) itemView.findViewById(R.id.handle);
         }
 

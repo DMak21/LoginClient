@@ -12,17 +12,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import tk.deepesh.loginclient.About.AboutActivity;
+import tk.deepesh.loginclient.AutoLoginService;
 import tk.deepesh.loginclient.Credentials.CredentialsActivity;
 import tk.deepesh.loginclient.PrevConn.PrevConnActivity;
 import tk.deepesh.loginclient.R;
 import tk.deepesh.loginclient.Settings.SettingsActivity;
 
+
 public class LoginLogoutActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
+
+    public void startService() {
+        startService(new Intent(getBaseContext(), AutoLoginService.class));
+
+    }
+
+    //    Method to stop the service
+    public void stopService() {
+        stopService(new Intent(getBaseContext(), AutoLoginService.class));
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        startService();
+
         setContentView(R.layout.activity_login_logout);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
