@@ -1,7 +1,9 @@
 package tk.deepesh.loginclient.Settings;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,15 +19,22 @@ import tk.deepesh.loginclient.R;
 import tk.deepesh.loginclient.RecyclerItemClickListener;
 
 public class AdvSetActivity extends AppCompatActivity {
+    SharedPreferences sharedPref;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
     private ArrayList<String> myDataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(AdvSetActivity.this);
+
+        if (sharedPref.getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppThemeLight);
+        }
+
         setContentView(R.layout.activity_adv_set);
         myDataset = new ArrayList<>();
         myDataset.add("BPGC-HOSTEL");

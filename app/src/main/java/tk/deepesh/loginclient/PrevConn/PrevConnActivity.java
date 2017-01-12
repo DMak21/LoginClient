@@ -1,6 +1,8 @@
 package tk.deepesh.loginclient.PrevConn;
 
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,15 +15,22 @@ import java.util.ArrayList;
 import tk.deepesh.loginclient.R;
 
 public class PrevConnActivity extends AppCompatActivity {
+    SharedPreferences sharedPref;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
     private ArrayList<String> myDataset;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(PrevConnActivity.this);
+
+        if (sharedPref.getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppThemeLight);
+        }
+
         setContentView(R.layout.activity_prev_conn);
 
         myDataset = new ArrayList<>();

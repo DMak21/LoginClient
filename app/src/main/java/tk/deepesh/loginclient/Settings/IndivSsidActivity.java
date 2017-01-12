@@ -1,7 +1,9 @@
 package tk.deepesh.loginclient.Settings;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
@@ -17,16 +19,23 @@ import tk.deepesh.loginclient.R;
 import tk.deepesh.loginclient.RecyclerItemClickListener;
 
 public class IndivSsidActivity extends AppCompatActivity {
+    SharedPreferences sharedPref;
     private RecyclerView mRecyclerView;
     private RecyclerView.Adapter mAdapter;
     private RecyclerView.LayoutManager mLayoutManager;
-
     private ArrayList<String> urlList;
     private String[][] paramList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(IndivSsidActivity.this);
+
+        if (sharedPref.getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppThemeLight);
+        }
+
         setContentView(R.layout.activity_indiv_ssid);
 
         final int position_adv_set = getIntent().getIntExtra("position_adv_set", 0);

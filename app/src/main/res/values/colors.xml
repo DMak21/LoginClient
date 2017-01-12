@@ -6,4 +6,12 @@
     <color name="colorAccent">#1DD35E</color>
     <color name="colorText">#fff</color>
     <color name="colorText2">#a0a0a0</color>
+    <color name="red">#f00</color>
+
+    <color name="colorPrimaryLight">#fff</color>
+    <color name="colorBackgroundLight">#fff</color>
+    <color name="colorPrimaryDarkLight">#a0a0a0</color>
+    <color name="colorAccentLight">#1DD35E</color>
+    <color name="colorTextLight">#000</color>
+    <color name="colorText2Light">#121212</color>
 </resources>

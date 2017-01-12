@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.HashSet;
@@ -69,7 +70,8 @@ public class AdvSetDialog {
         alertDialog.setOnShowListener(new DialogInterface.OnShowListener() {
             @Override
             public void onShow(DialogInterface arg0) {
-                alertDialog.getButton(DialogInterface.BUTTON_POSITIVE).setTextColor(ContextCompat.getColor(ad.getContext(), R.color.colorPrimary));
+                Button a = alertDialog.getButton(DialogInterface.BUTTON_POSITIVE);
+                a.setTextColor(ContextCompat.getColor(ad.getContext(), R.color.colorText));
             }
         });
         alertDialog.show();

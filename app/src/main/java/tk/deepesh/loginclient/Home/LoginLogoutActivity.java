@@ -1,7 +1,9 @@
 package tk.deepesh.loginclient.Home;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +24,10 @@ import tk.deepesh.loginclient.Settings.SettingsActivity;
 public class LoginLogoutActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
+    SharedPreferences sharedPref;
+
+
+
     public void startService() {
         startService(new Intent(getBaseContext(), AutoLoginService.class));
 
@@ -35,6 +41,12 @@ public class LoginLogoutActivity extends AppCompatActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(this);
+
+        if (sharedPref.getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppThemeLight);
+        }
 
         startService();
 

@@ -18,8 +18,11 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:layout_gravity="start"
+        android:background="@color/colorBackground"
         android:fitsSystemWindows="true"
         app:headerLayout="@layout/nav_header_login_logout"
+        app:itemIconTint="@color/colorText2"
+        app:itemTextColor="@color/colorText"
         app:menu="@menu/activity_login_logout_drawer" />
 
 </android.support.v4.widget.DrawerLayout>

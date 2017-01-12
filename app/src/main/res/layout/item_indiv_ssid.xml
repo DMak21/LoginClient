@@ -3,6 +3,7 @@
     android:id="@+id/layout_indiv_ssid"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="?attr/selectableItemBackground"
     android:orientation="vertical"
     android:paddingBottom="16dp"
     android:paddingLeft="16dp"
@@ -14,7 +15,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="URL: "
-        android:textColor="@color/colorText"
+        android:textColor="?android:textColorPrimary"
         android:textSize="18sp" />
 
     <TextView
@@ -23,7 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_toEndOf="@id/text_indiv_ssid_url"
         android:layout_toRightOf="@id/text_indiv_ssid_url"
-        android:textColor="@color/colorText2"
+        android:textColor="?android:textColorSecondary"
         android:textSize="18sp" />
 
     <TextView
@@ -32,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/text_indiv_ssid_url_value"
         android:text="PARAMETERS: "
-        android:textColor="@color/colorText"
+        android:textColor="?android:textColorPrimary"
         android:textSize="18sp" />
 
     <LinearLayout
@@ -46,35 +47,35 @@
             android:id="@+id/text_indiv_ssid_param1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText2"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_indiv_ssid_param2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText2"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_indiv_ssid_param3"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText2"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_indiv_ssid_param4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText2"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp" />
 
         <TextView
             android:id="@+id/text_indiv_ssid_param5"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/colorText2"
+            android:textColor="?android:textColorSecondary"
             android:textSize="16sp" />
 
     </LinearLayout>

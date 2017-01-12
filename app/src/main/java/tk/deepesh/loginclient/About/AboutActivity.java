@@ -1,8 +1,10 @@
 package tk.deepesh.loginclient.About;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -13,11 +15,20 @@ import tk.deepesh.loginclient.R;
 
 public class AboutActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPref;
     private TextView text_about_3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(AboutActivity.this);
+        Boolean light = sharedPref.getBoolean("light_theme_switch", false);
+
+        if (light) {
+            setTheme(R.style.AppThemeLight);
+        }
+
         setContentView(R.layout.activity_about);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

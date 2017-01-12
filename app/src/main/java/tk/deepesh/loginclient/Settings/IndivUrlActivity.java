@@ -2,6 +2,7 @@ package tk.deepesh.loginclient.Settings;
 
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
@@ -20,13 +21,22 @@ import tk.deepesh.loginclient.R;
 public class IndivUrlActivity extends AppCompatActivity {
     EditText param3_key, param3_value, param4_key, param4_value, param5_key, param5_value, next_request_regex, next_request_value, result_regex, url;
     Button save_btn;
-    CheckBox checkbox_param3, checkbox_param4, checkbox_param5, checkbox_username, checkbox_password, checkbox_next_request, checkbox_result, insecure_connection;
+    com.bigmercu.cBox.CheckBox checkbox_param3, checkbox_param4, checkbox_param5, checkbox_username, checkbox_password;
+    CheckBox checkbox_next_request, checkbox_result, insecure_connection;
     Req req = new Req();
     String[] a;
+    SharedPreferences sharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        sharedPref = PreferenceManager.getDefaultSharedPreferences(IndivUrlActivity.this);
+
+        if (sharedPref.getBoolean("light_theme_switch", false)) {
+            setTheme(R.style.AppThemeLight);
+        }
+
         setContentView(R.layout.activity_indiv_url);
 
         req.insecure = false;
@@ -49,11 +59,11 @@ public class IndivUrlActivity extends AppCompatActivity {
         param5_key = (EditText) findViewById(R.id.param5_key);
         param5_value = (EditText) findViewById(R.id.param5_value);
 
-        checkbox_username = (CheckBox) findViewById(R.id.checkbox_username);
-        checkbox_password = (CheckBox) findViewById(R.id.checkbox_password);
-        checkbox_param3 = (CheckBox) findViewById(R.id.checkbox_param3);
-        checkbox_param4 = (CheckBox) findViewById(R.id.checkbox_param4);
-        checkbox_param5 = (CheckBox) findViewById(R.id.checkbox_param5);
+        checkbox_username = (com.bigmercu.cBox.CheckBox) findViewById(R.id.checkbox_username);
+        checkbox_password = (com.bigmercu.cBox.CheckBox) findViewById(R.id.checkbox_password);
+        checkbox_param3 = (com.bigmercu.cBox.CheckBox) findViewById(R.id.checkbox_param3);
+        checkbox_param4 = (com.bigmercu.cBox.CheckBox) findViewById(R.id.checkbox_param4);
+        checkbox_param5 = (com.bigmercu.cBox.CheckBox) findViewById(R.id.checkbox_param5);
 
         insecure_connection = (CheckBox) findViewById(R.id.insecure_connection);
 

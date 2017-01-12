@@ -49,5 +49,22 @@
     </string>
     <string name="title_activity_indiv_ssid">IndivSSIDActivity</string>
     <string name="title_activity_indiv_url">IndivUrlActivity</string>
+    <string name="colon">:</string>
+    <string name="parameters_text">PARAMETERS :</string>
+    <string name="url_hint">http://www.google.com</string>
+    <string name="username_text">username</string>
+    <string name="from_login_screen">&#160;&#160;<![CDATA[<From Login Screen>]]></string>
+    <string name="url_text">URL :</string>
+    <string name="password_text">password</string>
+    <string name="key">key</string>
+    <string name="value">value</string>
+    <string name="insecure_connection">Insecure Connection</string>
+    <string name="on_successful_request">ON SUCCESSFUL REQUEST :</string>
+    <string name="execute_next_request_if">Execute Next Request If</string>
+    <string name="regex">regex</string>
+    <string name="result">Result :</string>
+    <string name="save">SAVE</string>
+    <string name="title_activity_sample">Sample</string>
+    <string name="pref_title_light_theme_switch">Switch to Light Theme</string>
 
 </resources>

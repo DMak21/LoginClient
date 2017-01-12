@@ -19,6 +19,11 @@ import tk.deepesh.loginclient.R;
 
 public class CredentialDialog {
     Context context;
+    private ClickListener listener;
+
+    public void setClickListener(ClickListener listener) {
+        this.listener = listener;
+    }
 
     public void showDialog(
             final Context context,
@@ -47,6 +52,10 @@ public class CredentialDialog {
                 ssidlist.add(newssid.getText().toString());
                 editor.putStringSet("ssidlist", ssidlist);
                 editor.commit();
+
+                if (listener != null)
+                    listener.onAdd();
+
             }
         });
 
@@ -59,5 +68,9 @@ public class CredentialDialog {
             }
         });
         alertDialog.show();
+    }
+
+    public interface ClickListener {
+        void onAdd();
     }
 }
