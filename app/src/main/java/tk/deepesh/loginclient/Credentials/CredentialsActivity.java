@@ -19,28 +19,10 @@ public class CredentialsActivity extends AppCompatActivity {
 
         sharedPref = PreferenceManager.getDefaultSharedPreferences(CredentialsActivity.this);
 
-        if (sharedPref.getBoolean("light_theme_switch", false)) {
-            setTheme(R.style.AppThemeLight);
-        }
-
         setContentView(R.layout.activity_credentials);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                final CredentialDialog alert = new CredentialDialog();
-                alert.showDialog(CredentialsActivity.this, "ADD");
-                alert.setClickListener(new CredentialDialog.ClickListener() {
-                    @Override
-                    public void onAdd() {
-                        recreate();
-                    }
-                });
-            }
-        });
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
     }
 
